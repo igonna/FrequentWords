@@ -22,21 +22,22 @@ bool wfreq::StringTransform::isLetter(char c)
 
 std::string wfreq::StringTransform::cleanString(std::string strDirty)
 {
-	std::string StrClean;
+	std::string strClean;
 	char space = ' ';
 	char newline = '\n';
 	for (size_t i = 0; i < strDirty.size(); ++i)
 	{
-		if (str[i] == space || str[i] == newline)
+		if (strDirty[i] == space || strDirty[i] == newline)
 		{
-			if (i && StrClean[StrClean.size() - 1] != space)
-				StrClean += space;
+			if (!strClean.empty())
+				if (static_cast<bool>(i) && strClean.back() != space)
+					strClean += space;
 			continue;
 		}
 		if (isAsciiChar(strDirty[i]))
-			StrClean += strDirty[i];
+			strClean += strDirty[i];
 	}
-	return str = StrClean;
+	return str = strClean;
 }
 
 void wfreq::StringTransform::cleanString()
