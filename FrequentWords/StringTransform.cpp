@@ -23,12 +23,14 @@ bool wfreq::StringTransform::isLetter(char c)
 std::string wfreq::StringTransform::cleanString(std::string strDirty)
 {
 	std::string StrClean;
+	char space = ' ';
+	char newline = '\n';
 	for (size_t i = 0; i < strDirty.size(); ++i)
 	{
-		if (str[i] == ' ')
+		if (str[i] == space || str[i] == newline)
 		{
-			if (i && str[i - 1] != ' ')
-				StrClean += str[i];
+			if (i && StrClean[StrClean.size() - 1] != space)
+				StrClean += space;
 			continue;
 		}
 		if (isAsciiChar(strDirty[i]))
